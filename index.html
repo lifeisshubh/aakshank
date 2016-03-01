@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aakshank is one of the largest college cultural festival of central India, oraganized by Team Aakshank IET-DAVV">
+    <meta name="keywords" content="Aakshank, Aakshank 2k16, Fest in Central India, Festival in India, Event in India, Cultural Festival, Site by Shubham Patel, @CodeKrafter, Biggest Cultural Fest of Central India, Nikhil D'Souza Show, Vh1 Supersonic 101, Indore, IET DAVV, DAVV, Devi Ahilya Viswavidhyalaya, Institute of Engineering and Technology DAVV">
+    <meta name="author" content="IET, DAVV">
+    <link rel="icon" href="img/icon_logo.ico" type="image/x-icon">
+
+    <title>Aakshank 2K16 | IET-DAVV</title>
+    
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+    
+<!--    sidebar-->
+    <link  rel="stylesheet" type="text/css" href="css/side-navbar.css">
+    
+    
+<!--    advanced glyphicons-->
+    <link href="css/bootstrap.icon-large.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<!--    script file for registration purpose-->
+            <script type="text/javascript">
+            function validateEmail(email) {
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+                function subm(e)
+                {
+                    e.preventDefault();
+                     var name = $('#name').val();
+                var email_id = $('#email_id').val();
+                var phone_no = $('#phone_no').val();
+                var college = $('#college').val();
+                var city = $('#city').val();
+                var year = $('#year').val();
+                var branch = $('#branch').val();
+                    var data = {name:name,email:email_id,phone:phone_no,college:college,city:city,year:year,branch:branch};
+                    if ((name !== "") && (email_id !== "") && (phone_no !== "") && ( branch !== "") && (city !== "") && (year !== "") && (college !== "")  && ( (validateEmail(email_id)))) {
+                        $.ajax({
+                           url:"http://aakshank2k16-ietdavv.rhcloud.com/submit",
+                            type:"POST",
+                            dataType:"json",
+                            contentType:"application/json",
+                            data :data,
+                            success:function(res){
+                                console.log(res);
+                                window.location.replace("thankYou.html");                 
+                                }
+                        });
+                    }
+                    
+                }
+            function postContactToGoogle(){
+                var name = $('#name').val();
+                var email_id = $('#email_id').val();
+                var phone_no = $('#phone_no').val();
+                var college = $('#college').val();
+                var city = $('#city').val();
+                var year = $('#year').val();
+                var branch = $('#branch').val();
+                
+                if ((name !== "") && (email_id !== "") && (phone_no !== "") && ( branch !== "") && (city !== "") && (year !== "") && (college !== "")  && ( (validateEmail(email_id)))) {
+                    $.ajax({
+                        url: "https://docs.google.com/forms/d/1JFIFFVcba9Hwyj31FZWDqEgOQksJ07dWlEIugorrSx0/formResponse",
+                        data: { "entry_1866287427" : name, "entry_1192962370": phone_no, "entry_1649166214" : email_id, "entry_534349567": college, "entry_1736144438": city , "entry_1238840323": year, "entry_1010650438": branch },
+                        type: "POST",
+                        dataType: "xml",
+                        statusCode: {
+                            0: function (){
+
+                                $('#name').val("");
+                                $('#email_id').val("");
+                                $('#college').val("");
+                                window.location.replace("thankYou.html");
+                            },
+                            200: function (){
+                                $('#name').val("");
+                                $('#email_id').val("");
+                                $('#college').val("");
+                                window.location.replace("thankYou.html");
+                            }
+                        }
+                    });
+                }
+                else {
+                    console.log("Error Message : Not Working");
+                    alert("Error");
+                }
+            }
+        </script>
+
+<!--        Registration script ends here-->
+    
+            
+</head>
+
+<body id="page-top" data-spy="scroll" data-target="#nav-a" data-offset="20">
+    <div id="wrapper" >
+
+        <!-- Sidebar -->
+        <nav id="sidebar-wrapper" class="navbar" id="nav-a" style="font-family:sans-serif;">
+            <ul class="sidebar-nav navbar" id="mainNav" >
+                <li class="sidebar-brand" data-scroll>
+                    <a class="page-scroll" href="#page-top">
+                        Aakshank 2k16
+                    </a>
+                    </li>
+                    <li data-scroll>
+                        <a class="page-scroll" href="#about"><span class="glyphicon glyphicon-info-sign"></span> About</a>
+                    </li>
+                    <li  data-scroll>
+                        <a class="page-scroll" href="#event"><span class="glyphicon glyphicon-film"> </span> Events</a>
+                    </li>
+                    <li data-scroll>
+                        <a class="page-scroll" href="#update"><span class="glyphicon glyphicon-upload"></span>Updates</a>
+                    </li>
+                    
+                    <li data-scroll>
+                        <a class="page-scroll" href="sponsors.html" target="_blank"><span class="fa fa-money"></span> Sponsors</a>
+                    </li>
+                    <li data-scroll>
+                        <a class="page-scroll" href="#team"><span class="glyphicon glyphicon-phone-alt"></span> Contact Us</a>
+                    </li>
+                    <li data-scroll>
+                        <a class="page-scroll" href="sponsors.html#our_team" target="_blank"><span class="glyphicon glyphicon-glass"></span>Team</a>
+                    </li>
+                    <li data-scroll>
+                        <!-- Modal trigger for registration -->
+                        <a data-toggle="modal" data-target="#registration"><span class="glyphicon glyphicon-pencil"></span> Register Here</a>
+                    </li>
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Toggle button -->
+        <div id="page-toggle-btn-1">
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle" style="border-top-left-radius:0px;border-bottom-left-radius:0px;font-weight:bold;font-size:20px">&gt;</a>
+        </div>
+        
+        <!--    Registration link for page-->
+    <div id="reg-tab">
+      <a href="#" data-toggle="modal" data-target="#registration"><img src="img/Register.png" style="cursor:pointer"></a>
+    </div>
+
+        
+        <!-- /#page-Page Toggle Button Ends -->
+
+    </div>
+    <!-- /#wrapper -->
+    
+ 
+    
+<!--    Facebook Feed Integration start-->
+    <!--    1. Include the JavaScript SDK on your page once, ideally right after the opening <body> tag.-->
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!--    Facebook feed Integration Ends-->
+    
+    
+<!--    sponsors link attachment-->
+    <div id="sponsors_link">
+        <div class="row">
+            <div class="col-sm-offset-8 col-sm-4 col-xs-4 col-xs-offset-8 text-right">
+        <a href="sponsors.html" title="Our Sponsors" target="_blank">
+            <img src="img/sponsor/icon-sponsors.png" class="img-responsive" style="cursor:pointer">
+        </a>
+            </div>
+        </div>
+    </div>
+    
+    
+<!--    Modal-->
+    <div id="registration" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+<!-- Modal Content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Registration for Aakshank 2k16</h4>
+                </div>
+                <div class="modal-body">
+        <form name="aakshank_form" id="regForm" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Name :</label>
+                
+                <div class="col-sm-10"> <input id="name" name="name" type="text" placeholder="e.g. Prem Kapoor" class="form-control" required>
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="phone_no" class="control-label col-sm-2">Phone No.</label>
+                <div class="col-sm-10"> <input type="tel" name="phone_no" id="phone_no" class="form-control" placeholder="e.g. 9876543210" required>
+            </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email_id">Email Id</label>
+                <div class="col-sm-10"> <input type="email" name="email_id" id="email_id" class="form-control" placeholder="e.g. Aakshank@ietdavv.edu.in" required>
+            </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="collge">College :</label>
+                <div class="col-sm-10"> <input name="college" id="college" class="form-control" type="text" placeholder="e.g. Institute of Engineering and Technology, DAVV" required>
+            </div>
+            </div>
+            <div class="form-group">
+            <label class="control-label col-sm-2" for="branch">Branch : </label>
+            <div class="col-sm-10">
+                <select name="branch" id="branch" class="form-control" required>
+                    <option>Information Technology Engineering</option>
+                    <option>Computer Engineering</option>
+                    <option>Electronics &amp; Telecommunication Engineering</option>
+                    <option>Electronics &amp; Instrumentation Engineering</option>
+                    <option>Mechanical Engineering</option>
+                    <option>Civil Engineering</option>
+                    <option>Other</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="year">Year of study :</label>
+                    <div class="col-sm-10">
+                        <select name="year" id="year" class="form-control" required>
+                            <option>1st Year</option>
+                            <option>2nd Year</option>
+                            <option>3rd Year</option>
+                            <option>Final Year</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="city">City :</label>
+                <div class="col-sm-10"> <input name="city" id="city" class="form-control" type="text" placeholder="e.g. Indore, Bhopal, Delhi" required>
+            </div>
+                </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button class="btn btn-block btn-primary" onclick="subm(event);">Submit <span class="glyphicon glyphicon-ok-sign"></span></button>
+                    </div>
+            </div>
+            
+        </form>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    modal 1 ends here-->
+<!--    model for campus Abdr start-->
+<!--    model for campus abdr ends here-->
+    <header>
+        <video autoplay loop="true"
+  poster="img/mobile_back.jpg"
+  id="bgvid">
+    <source src="video/back_v.webm" type="video/webm">
+    <source src="video/back_v.mp4" type="video/mp4">
+    </video>
+        
+        <div id="logo-davv" class="col-xs-3 col-sm-2 col-md-1">
+            <a href="http://www.iet.dauniv.ac.in/" target="_blank" style="cursor:pointer" title="IET DAVV">
+            <img src="img/Davv-logo.png" style="cursor:pointer" alt="Davv LOGO" class="img-responsive"></a>
+        </div>
+
+        <div class="header-content">
+            <div class="header-content-inner" id="header_box">
+                <div class="row">
+                <div class="col-sm-8 col-xs-10 col-xs-offset-1 col-sm-offset-2">
+                    <section id="sup_header">
+                            <div id="container" class="container">
+                                    <ul id="scene" class="scene">
+                                        <li class="layer" data-depth="0.40"><img id="secondlayer" src="images/layer4.png" class="img-responsive"></li>
+                                        <li class="layer" data-depth="0.20"><img id="firstlayer" src="images/layer5.png" class="img-responsive"></li>
+                                        <li class="layer" data-depth="-0.40"><img id="logo" src="images/layer6.png" class="img-responsive fadeIn"></li>
+                                    </ul>
+                            </div>
+                    </section>
+                
+                </div>
+                </div>
+                
+                <div class="text-center" id="box-x">
+                <div class="col-xs-4 col-xs-offset-4">
+                <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+<!--    new header -->
+    
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2 text-center">
+                    <h2 class="section-heading heading-font" style="font-size:40px">Since</h2>
+                    <p id="year_run">Time</p>
+                    <hr class="light">
+                    <p>Aakshank is a annual cutural festival of Institute of Engineering and Technology, DAVV which was started by a group of enthusuastic IETians, in 2001, in order to provide a grooming stage to the budding talents in the Institute, Aakshank has transformed itself into the most zestful and extra-ordinary cultural bonanza in Central India. The event cover a wide array of events ranging from competition in varied genre like Dance, Drama, Singing to Star Night, DJ Night, StuntMania and plenty of informals.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<!--    Day Event Starts Here-->
+    <section class="no-padding col-xs-12" id="day">
+            <h1 style="color:#fff;font-size:60px;">Informals</h1>
+    
+        <div class="day-container">
+            <div class="day-carousel">
+                <div class="day-item day-a"><figure><img class="img-responsive img-rounded" src="img/paint.jpg"><p>Paint Ball</p></figure></div>
+                <div class="day-item day-b"><figure><img class="img-responsive img-rounded" src="img/street_footBall1.jpg"><p>Street Football</p></figure></div>
+                <div class="day-item day-c"><figure><img class="img-responsive img-rounded" src="img/angry.jpg"><p>Angry Birds</p></figure></div>
+                <div class="day-item day-d"><figure><img class="img-responsive img-rounded" src="img/photobooth.jpg"><p>Photobooth</p></figure></div>
+                <div class="day-item day-e"><figure><img class="img-responsive img-rounded" src="img/stunt.jpg"><p>Stunt Mania</p></figure></div>
+                <div class="day-item day-f"><figure><img class="img-responsive img-rounded" src="img/z.jpg"><p>Zorbing</p></figure></div>
+        
+            <div class="day-item day-g"><figure><img class="img-responsive img-rounded" src="img/burma_bridge.jpg"><p>Burma Bridge</p></figure></div>
+            
+        <div class="day-item day-h"><figure><img class="img-responsive img-rounded" src="img/ClimbingWall.jpg"><p>Wall Climbing</p></figure></div>
+            
+    <div class="day-item day-i"><figure><img class="img-responsive img-rounded" src="img/fooseball.jpg"><p>Foose Ball</p></figure></div>
+            
+    <div class="day-item day-j"><figure><img class="img-responsive img-rounded" src="img/lan_gaming.jpg"><p>Lan Gaming</p></figure></div>
+            
+<div class="day-item day-k"><figure><img class="img-responsive img-rounded" src="img/trampolin.jpg"><p>Trampolin</p></figure></div>
+            
+<div class="day-item day-l"><figure><img class="img-responsive img-rounded" src="img/temple_run.jpg"><p>Live Temple Run</p></figure></div>
+            </div>
+
+</div>
+        <div class="day-next btn btn-default" id="next-button">Next</div>
+        <div class="day-prev btn btn-default" id="prev-button">Prev</div>
+    </section>
+
+
+<!--   Day Events Ends Here -->
+    
+
+    
+    <section class="no-padding" id="event">
+        <iframe class="no-padding" src="slide/index.html" style="width:100%;height:100vh;border:0;" scrolling="no"></iframe>
+    </section>
+    
+    
+    
+    <section id="update">
+        <div class="container-fluid">
+            <h1 class="small-heading"><small><span class="glyphicon glyphicon-refresh"></span></small> Recent Updates</h1>
+            <div class="row">
+                <div class="col-sm-4 col-xs-10 col-xs-offset-1 col-sm-offset-0">
+                <!-- facebook feed attachment -->
+                    <div class="fb-page" data-href="https://www.facebook.com/aakshank/?fref=ts" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/aakshank/?fref=ts"><a href="https://www.facebook.com/aakshank/?fref=ts">Aakshank, IET-DAVV</a></blockquote></div></div>
+                </div>
+                <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-3">
+                <!-- twitter feed Integration -->
+                    <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/aakshank" data-widget-id="677620877412966401">Tweets by @aakshank</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                
+                </div>
+                <div class="col-sm-3 col-xs-10 col-xs-offset-1 col-sm-offset-1">
+                    <!-- instagram feed -->
+                        <div id="instafeed" class="row">
+                        </div>
+                    <!--instagram feed ends -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="team" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Contact Us</h2>
+                    <hr class="primary">
+                    <p>For any information regarding events, contact us at following phone numbers and email-id</p>
+                </div>
+                <div class="col-lg-3 col-lg-offset-3 col-xs-8 col-xs-offset-2 text-center">
+                    <div class="row">
+                    <div class="col-xs-4 col-sm-2">
+                        <i class="fa fa-phone fa-3x" style="font-size:60px"></i>    
+                    </div>
+                    <div class="col-xs-8">
+                    <p> +918982310872<br>
+                    +919098021458</p>
+                    </div>
+                    </div>
+                    </div>
+                <div class="col-lg-3 text-center col-xs-8 col-xs-offset-2 col-lg-offset-0">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-3"><i class="fa fa-envelope-o fa-3x" data-wow-delay=".1s" style="font-size:60px;"></i></div>
+                        <div class="col-xs-8">
+                            
+                    <p style="padding-top:17px"><a href="mailto:aakshank@ietdavv.edu.in" style="padding-left:25px;"> aakshank@ietdavv.edu.in</a></p>
+                </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+
+    </section>
+        
+    
+<!--    footer section   -->
+    <footer id="footer">
+        <div class="row">
+            <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                <p><a href="#page-top">Home</a></p>
+                </div>
+                <div class="col-xs-6">
+                    <p><a href="#about">About Us</a></p>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-push-4">
+            <div class="row">
+                <div class="col-xs-6">
+                <p><a href="sponsors.html" target="_blank">Sponsors</a> </p>
+                </div>
+                <div class="col-xs-6">
+                <p><a href="brochure/Aakshank_Brochure.pdf" target="_blank">Brochure</a></p>
+                </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-4 text-center col-sm-pull-4" >
+                <div class="row">
+                    <div class="col-xs-12">
+                            <img src="img/footer_logo.png" class="img-responsive" style="display:inline">
+                    </div>
+            </div>
+            <div class="row">
+                <p>&copy; Aakshank 2k16<br>
+                <a href="https://www.facebook.com/aakshank/" target="_blank"><span class="fa fa-facebook-square"></span></a> <a href="https://twitter.com/aakshank" target="_blank"><span class="fa fa-twitter-square"></span></a> <a href="https://www.instagram.com/aakshank/" target="_blank"><span class="fa fa-instagram"></span></a> <a href="https://in.pinterest.com/aakshank/" target="_blank"><span class="fa fa-pinterest"></span></a></p>
+                <p class="small">Created in <span class="fa fa-heart"></span> with Bootstrap &amp; NodeJs</p>
+                </div>
+            </div>
+        </div>        
+    </footer>
+<!--footer section end  -->
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    
+    <!--    Preloader for site-->
+    <script type="text/javascript">
+    //<![CDATA[
+        $(window).load(function() { // makes sure the whole site is loaded
+            $('#status').fadeOut(); // will first fade out the loading animation
+            $('#preloader').delay(3).fadeOut('slow'); // will fade out the white DIV that covers the website.
+            $('body').delay(3).css({'overflow':'visible'});
+        })
+    //]]>
+    </script>
+<!--    preloader srcipt ends-->
+
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    
+    
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+    
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    
+        $("#wrapper").toggleClass("toggled");
+        
+    </script>
+    
+    
+<!--    Parallax lib-->
+    <script src="js/parallax.min.js"></script>    
+        <script>
+
+	// Pretty simple huh?
+	var scene = document.getElementById('scene');
+	var parallax = new Parallax(scene);
+
+	</script>
+    
+<!--    Instafeed for instagram-->
+    <script src="js/instafeed.min.js"></script>
+    <script>
+            var feed = new Instafeed({
+                get: 'tagged',
+                tagName: 'aakshank',
+                clientId: '467ede5a6b9b48ae8e03f4e2582aeeb3',
+                sortBy: 'most-recent',
+                limit: 12,
+                template: '<a href="{{link}}" class="col-xs-4" target="_blank"><img class="img-responsive" src="{{image}}" /><div class="likes">&hearts; {{likes}}</div></a>'
+            });
+            feed.run();            
+    </script>
+<!--Instafeed integration ends here-->
+    
+    
+</body>
+</html>
